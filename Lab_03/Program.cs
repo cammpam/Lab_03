@@ -11,12 +11,25 @@ namespace WordGuessGame
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to Josie's Guessing Game");
-            Console.WriteLine("Enter Your Name");
-            string name = Console.ReadLine();
-            Console.Clear();
-            Console.WriteLine($"{name}, Pick your difficulty");
-            Level();
+            try 
+	        {	        
+                string fileName = "word-game.txt";
+                string path = Path.Combine(Environment.CurrentDirectory, @"Word-Game\", fileName);
+
+                Console.WriteLine("Welcome to Josie's Guessing Game");
+                Console.WriteLine("Enter Your Name");
+                string name = Console.ReadLine();
+                Console.Clear();
+                Console.WriteLine($"{name}, Pick your difficulty");
+                Level();
+
+		
+	        }
+	        catch (DirectoryNotFoundException)
+	        {
+
+		        Console.WriteLine("Dirctory Not Found!");
+	        }
 
             Console.Read();
         }
@@ -34,22 +47,31 @@ namespace WordGuessGame
             }
             string difficultyChoice = Console.ReadLine().ToUpper();
 
+
             if (difficultyChoice == "A")
             {
+                Console.Clear();
                 Console.WriteLine($"Great, You chose { one}! Lets Start");
 	        }
             else if (difficultyChoice == "B")
 	        {
+                Console.Clear();
                 Console.WriteLine($"Great, You chose { two}! Lets Start");
 	        } 
             else if (difficultyChoice == "C")
 	        {
+                Console.Clear();
                 Console.WriteLine($"Great, You chose { three}! Lets Start");
+	        }
+            else if (difficultyChoice == "Q")
+	        {
+                Console.Clear();
+                Environment.Exit(0);
 	        }
             else
             {
                 Console.Clear();
-                Console.WriteLine("Sorry, Invaid Choice. Try Again!");
+                Console.WriteLine("Sorry, Invaid Choice. Try Again! OR Press q to quit");
                 DifficultyTryAgain();
 
             }
@@ -61,5 +83,10 @@ namespace WordGuessGame
                 Level();
         }
 
+
+        static void LevelElem()
+        {
+
+        }
     }
 }
