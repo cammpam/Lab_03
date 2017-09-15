@@ -28,7 +28,7 @@ namespace WordGuessGame
 	        catch (DirectoryNotFoundException)
 	        {
 
-		        Console.WriteLine("Dirctory Not Found!");
+		        Console.WriteLine("Dirctory Not Found!"); 
 	        }
 
             Console.Read();
